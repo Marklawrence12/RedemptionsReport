@@ -18,6 +18,14 @@ except ImportError:
 	from urllib.request import urlopen
 
 try:
+    from io import BytesIO
+except ImportError:
+    try:
+        from cStringIO import StringIO as BytesIO
+    except ImportError:
+        from StringIO import StringIO as BytesIO
+
+try:
     from hashlib import md5
 except ImportError:
     try:
@@ -71,5 +79,3 @@ def exception():
     "Return the current the exception instance currently being handled"
     # this is needed to support Python 2.5 that lacks "as" syntax
     return sys.exc_info()[1]
-
-
